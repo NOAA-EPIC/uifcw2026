@@ -442,7 +442,6 @@ DEBIAN_FRONTEND=noninteractive apt install -y ruby-full
 
 su - ubuntu <<'EOF'
 
-
 sudo gem install sqlite3
 sudo gem install thread
 sudo gem install pool
@@ -466,18 +465,17 @@ wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 sh Miniconda3-latest-Linux-x86_64.sh -b -p /home/ubuntu/miniconda3
 /home/ubuntu/miniconda3/bin/conda init
 
+# get fixed files and climatology for HSD cases
+cd /home/ubuntu/
 wget https://noaa-ufs-htf-pds.s3.amazonaws.com/develop-20260212/HSD_fix_files_and_case_data.tar.gz 
-
 tar -vxzf HSD_fix_files_and_case_data.tar.gz
-
 mkdir -p /home/ubuntu/UFS-WM_RT
 mv /home/ubuntu/HSD_cases_data/NEMSfv3gfs /home/ubuntu/UFS-WM_RT
 
-
-mkdir -p /home/ubuntu/UFS-WM_RT/NEMSfv3gfs/input-data-20240501/HSD_input_data/2020072400
-cd /home/ubuntu/UFS-WM_RT/NEMSfv3gfs/input-data-20240501/HSD_input_data/2020072400
+# get data for HSD plots
+mkdir -p /home/ubuntu/UFS-WM_RT/NEMSfv3gfs/input-data-20251015/HSD_input_data/2020072400
+cd /home/ubuntu/UFS-WM_RT/NEMSfv3gfs/input-data-20251015/HSD_input_data/2020072400
 wget https://s3.us-east-1.amazonaws.com/epic.sandbox.content/gfs-pgrb2.tar.gz 
 tar -vxzf gfs-pgrb2.tar.gz 
 
 EOF
-
