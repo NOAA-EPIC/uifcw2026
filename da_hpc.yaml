@@ -1,13 +1,13 @@
 Region: us-east-1
 Image:
   Os: ubuntu2204 
-  CustomAmi: ami-06eed812c545acc77
+  CustomAmi: ami-01de1b43ea94bf578
 HeadNode:
   InstanceType: c7i.2xlarge
   Networking:
     SubnetId: subnet-088f38370a401610e 
   Ssh:
-    KeyName: uifcw2025 
+    KeyName: uifcw2026 
   LocalStorage:
     RootVolume:
       Size: 500
@@ -23,9 +23,9 @@ Scheduling:
   SlurmQueues:
   - Name: compute
     ComputeResources:
-    - Name: c7i24xlarge
+    - Name: c7i4xlarge
       Instances:
-      - InstanceType: c7i.24xlarge
+      - InstanceType: c7i.4xlarge
       MinCount: 0
       MaxCount: 10 
       Efa:

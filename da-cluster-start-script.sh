@@ -358,6 +358,7 @@ spack:
      - crtm@2.4.0.1
      - mapl@2.53.4 ^esmf@8.8.0
      - esmf@=8.8.0 snapshot=none
+     - sp@2.5.0
   specs:
   - matrix:
     - [\$packages]
