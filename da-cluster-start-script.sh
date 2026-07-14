@@ -377,6 +377,20 @@ spack:
       prefer: ['%oneapi']
       providers:
         mpi: [intel-oneapi-mpi]
+  compilers:
+  - compiler:
+      spec: oneapi@=2024.2.1
+      paths:
+        cc: /opt/intel/oneapi/compiler/latest/bin/icx
+        cxx: /opt/intel/oneapi/compiler/latest/bin/icpx
+        f77: /opt/intel/oneapi/compiler/latest/bin/ifort
+        fc: /opt/intel/oneapi/compiler/latest/bin/ifort
+      flags: {}
+      operating_system: ubuntu22.04
+      target: x86_64
+      modules: []
+      environment: {}
+      extra_rpaths: []
 EOF
 
 cd /opt/spack-stack/envs/ue-oneapi-2024.2.1
