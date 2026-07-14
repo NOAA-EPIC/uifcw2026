@@ -117,7 +117,7 @@ source "amazon-ebs" "base" {
   ssh_timeout                           = "60m"
   ssh_username                          = var.aws_ssh_username
   ssh_interface                         = "private_ip"
-  subnet_id                             = "subnet-078043a467c391dfd"
+  subnet_id                             = "subnet-<your subnet_id>"
   tags                                  = { Name = "UIFCW-Cluster-${local.now}" }
   temporary_security_group_source_cidrs = var.aws_temporary_security_group_source_cidrs
 }
@@ -130,7 +130,7 @@ source "amazon-ebs" "base" {
 
 build {
   source "amazon-ebs.base" {
-    ami_description = "UIFCW Training Cluster"
+    ami_description = "UIFCW HSD Training Cluster"
     name            = "UIFCW-Cluster-Ubuntu-22.04-hvm"
     source_ami_filter {
       filters = {

@@ -1,11 +1,11 @@
 Region: us-east-1
 Image:
   Os: ubuntu2204 
-  CustomAmi: ami-0c0d5db821dd5aa7d 
+  CustomAmi: ami-<your packer generated AMI ID here>
 HeadNode:
   InstanceType: c7i.2xlarge
   Networking:
-    SubnetId: subnet-088f38370a401610e 
+    SubnetId: subnet-<your subnet id here>
   Ssh:
     KeyName: uifcw2026 
   LocalStorage:
@@ -34,7 +34,7 @@ Scheduling:
       PlacementGroup:
         Enabled: true
       SubnetIds:
-      - subnet-088f38370a401610e
+      - subnet-<your subnet id here>
 SharedStorage:
   - MountDir: /scratch
     Name: ebs
