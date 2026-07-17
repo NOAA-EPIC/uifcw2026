@@ -1,0 +1,62 @@
+Region: us-east-1
+Image:
+  Os: ubuntu2204 
+  CustomAmi: <your AMI ID> 
+HeadNode:
+  CustomActions:
+    OnNodeConfigured:
+      Script: s3://epic.sandbox.content/global_workflow_postinstall.sh
+  InstanceType: c7i.2xlarge
+  Networking:
+    SubnetId: <your subnet ID>
+  Ssh:
+    KeyName: uifcw2026 
+  LocalStorage:
+    RootVolume:
+      Size: 500
+      VolumeType: gp3
+      Iops: 10000
+      Throughput: 1000
+  Iam:
+    AdditionalIamPolicies:
+      - Policy: arn:aws:iam::aws:policy/AmazonS3FullAccess
+      - Policy: arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore
+Scheduling:
+  Scheduler: slurm
+  SlurmQueues:
+  - Name: compute
+    ComputeResources:
+    - Name: c7i24xlarge
+      Instances:
+      - InstanceType: c7i.24xlarge
+      MinCount: 0
+      MaxCount: 50 
+      Efa:
+        Enabled: false 
+    Networking:
+      PlacementGroup:
+        Enabled: true
+      SubnetIds:
+      - <your subnet ID>
+  - Name: processing 
+    ComputeResources:
+    - Name: c7i12xlarge
+      Instances:
+      - InstanceType: c7i.12xlarge
+      MinCount: 0
+      MaxCount: 50 
+      Efa:
+        Enabled: false 
+    Networking:
+      PlacementGroup:
+        Enabled: true
+      SubnetIds:
+      - <your subnet ID>
+SharedStorage:
+  - MountDir: /lustre
+    Name: globalworkflow 
+    StorageType: FsxLustre
+    FsxLustreSettings:
+      StorageCapacity: 12000
+      DeploymentType: SCRATCH_2
+
