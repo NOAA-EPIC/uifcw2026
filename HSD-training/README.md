@@ -297,7 +297,7 @@ mv log* atmf* sfcf* out err orig-results-001/
 
 # Plot Exercise 1 results from $RUN_DIR
 # cd $RUN_DIR        # if needed
-$SRC_DIR/tests-dev/test_cases/utils/plot-test* .
+cp $SRC_DIR/tests-dev/test_cases/utils/plot-test* .
 ll plot-test-*
 ./plot-test-1.sh
 ll *.png
